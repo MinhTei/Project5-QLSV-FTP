@@ -3,9 +3,9 @@
 define('BASE_URL', 'http://localhost/qlsv_ftp_project/');
 
 // Cấu hình kết nối database
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "sql310.infinityfree.com";
+$username = "if0_40696768";
+$password = "qohTKq2Nd8vT";
 $dbname = "if0_40696768_qlsv_db";
 
 // Tạo kết nối

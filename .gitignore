@@ -1,0 +1,12 @@
+# Files to exclude from git
+node_modules/
+.DS_Store
+.env
+.env.local
+*.log
+.vscode/
+.idea/
+setup.php
+FLOW_DATA.md
+DEPLOY_GUIDE.md
+.git/

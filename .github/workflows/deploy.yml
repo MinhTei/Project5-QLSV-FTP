@@ -1,0 +1,41 @@
+name: Deploy to FTP Server
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/node_modules/
+            **/.env
+            **/README.md
+            **/FLOW_DATA.md
+            **/setup.php
+            **/.github/
+            **/deploy.yml
+
+      - name: Notify deployment
+        if: always()
+        run: echo "Deployment completed at $(date)"
