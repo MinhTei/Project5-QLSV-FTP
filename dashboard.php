@@ -127,6 +127,12 @@ if ($result->num_rows > 0) {
             font-size: 14px;
         }
         
+        .btn-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
         .search-box {
             margin-bottom: 20px;
         }
@@ -238,6 +244,7 @@ if ($result->num_rows > 0) {
                             <td><?php echo $student['year']; ?></td>
                             <td>
                                 <div class="actions">
+                                    <a href="<?php echo BASE_URL; ?>view_student.php?id=<?php echo $student['id']; ?>" class="btn btn-info">Xem</a>
                                     <a href="<?php echo BASE_URL; ?>edit_student.php?id=<?php echo $student['id']; ?>" class="btn btn-warning">Sửa</a>
                                     <a href="<?php echo BASE_URL; ?>delete_student.php?id=<?php echo $student['id']; ?>" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</a>
                                 </div>

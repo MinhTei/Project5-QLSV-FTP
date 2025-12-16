@@ -2,11 +2,24 @@
 // Cấu hình base URL
 define('BASE_URL', 'http://localhost/qlsv_ftp_project/');
 
-// Cấu hình kết nối database
-$servername = "sql310.infinityfree.com";
-$username = "if0_40696768";
-$password = "qohTKq2Nd8vT";
-$dbname = "if0_40696768_qlsv_db";
+// Detect môi trường (LOCAL hoặc PRODUCTION)
+$is_local = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || 
+             strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false);
+
+// Cấu hình database dựa trên môi trường
+if ($is_local) {
+    // Cấu hình LOCAL (WAMP)
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "if0_40696768_qlsv_db";
+} else {
+    // Cấu hình PRODUCTION (Infinityfree)
+    $servername = "sql310.infinityfree.com";
+    $username = "if0_40696768";
+    $password = "qohTKq2Nd8vT";
+    $dbname = "if0_40696768_qlsv_db";
+}
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
